@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+       #Edit{
+           margin-left: 130px;
+           background-color: indianred;
+       }
+       #Delete{
+           margin-left: 20px;
+           background-color: indianred;
+       }
+    </style>
+</head>
+<body>
+<h3>Add New Product</h3>
+<input placeholder="New product" id="input" style="width:150px">
+<input value="Add" style="background-color: indianred" type=button onclick="Add()">
+<h3>Display All Product</h3>
+<h5>Product Name</h5>
+<p id="display"> </p>
+</body>
+</html>
+<script>
+    Before = ['Sony Experia', "Bphone 3 ", 'Vsmart V', 'Iphone X']
+
+    function Add() {
+        x = document.getElementById('input').value
+        Before.unshift(x)
+       display()
+    }
+    function display(){
+        tab = '<table >'
+        for (var i = 0; i < Before.length; i++) {
+            tab += '<tr>'
+            tab += '<td>' + Before[i] + '</td>'
+            tab += '<td>' + '<input id="Edit" onclick="Edit('+i+')" type="button"  value="Edit">' + '</td>'
+            tab += '<td>' + '<input id="Delete" type="button" onclick="Delete('+i+')"  value="Delete">' + '</td>'
+            tab += "</tr>"
+        }
+        tab += '</table>'
+        document.getElementById('display').innerHTML = tab
+    }
+ display()
+function Edit(i){
+    edit=prompt("Sửa sửa cc ")
+    Before.splice(i,1,edit)
+display(i)
+}function Delete(i){
+        Before.splice(i,1)
+        display(i)
+    }
+
+
+</script>
